@@ -227,7 +227,7 @@ function render(cxt){
     var temp=setFontSize+"px "+"Georgia";
     cxt.font=temp;
     //alert(cxt.font);
-    cxt.fillText("COUNTDOWN!",(WINDOW_WIDTH-7.5*parseInt(setFontSize))/2,WINDOW_HEIGHT/2+10*(RADIUS+1));
+    cxt.fillText("COUNTDOWN!",(WINDOW_WIDTH-7.5*parseInt(setFontSize))/2,WINDOW_HEIGHT/2+Math.min(WINDOW_HEIGHT,WINDOW_WIDTH)/8);//10*(RADIUS+1)
     cxt.textAlign="start";
 
     //setFontSize="20";
