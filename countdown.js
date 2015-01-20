@@ -32,6 +32,10 @@ window.onload=function(){
     findDimensions();//update the WINDOW_para
     WINDOW_HEIGHT=WINDOW_HEIGHT_TURN;
     WINDOW_WIDTH=WINDOW_WIDTH_TURN;
+    MARGIN_LEFT=Math.round(WINDOW_WIDTH/10);
+    RADIUS=Math.round(WINDOW_WIDTH*4/5/LengthNum)-1;
+    MARGIN_TOP=WINDOW_HEIGHT/2-25*(RADIUS+1)-60;
+
     canvas.width=WINDOW_WIDTH;
     canvas.height=WINDOW_HEIGHT;
 
