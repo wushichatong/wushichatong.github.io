@@ -6,7 +6,7 @@ var WINDOW_WIDTH=800;
 var WINDOW_HEIGHT_TURN=WINDOW_HEIGHT;
 var WINDOW_WIDTH_TURN=WINDOW_WIDTH;
 
-var setFonsize=20;//random set
+var setFontSize=20;//random set
 
 const LengthNum=147;
 var RADIUS=Math.round(WINDOW_WIDTH*4/5/LengthNum)-1;
@@ -219,15 +219,25 @@ function render(cxt){
 
         cxt.fill();
     }
+    if(WINDOW_HEIGHT<WINDOW_WIDTH){
+        setFontSize=parseInt(WINDOW_WIDTH/15);
+        //alert(setFontSize);
+    }else setFontSize=parseInt(WINDOW_HEIGHT/15);
+    //alert(setFontSize);
+    var temp=setFontSize+"px "+"Georgia";
+    cxt.font=temp;
+    //alert(cxt.font);
+    cxt.fillText("COUNTDOWN!",(WINDOW_WIDTH-8.5*parseInt(setFontSize))/2,WINDOW_HEIGHT/2+10*(RADIUS+1));
+    cxt.textAlign="start";
 
-    cxt.font="100px Georgia";
-    cxt.fillText("COUNTDOWN!",(WINDOW_WIDTH-7*100)/2,WINDOW_HEIGHT/2+10*(RADIUS+1));
-
-
-    cxt.fillStyle="rgb(0,102,153)";//no then changeable
-    cxt.font="20px Georgia";
-    cxt.fillText("FoYu",MARGIN_LEFT,WINDOW_HEIGHT-40);
-    cxt.fillText("FaYe",MARGIN_LEFT,WINDOW_HEIGHT-20);
+    //setFontSize="20";
+    cxt.fillStyle="rgb(0,102,153)";
+    if(WINDOW_HEIGHT<WINDOW_WIDTH){
+        setFontSize=WINDOW_WIDTH/40;
+    }else setFontSize=WINDOW_HEIGHT/40;
+    cxt.font=setFontSize+"px "+"Georgia";
+    cxt.fillText("FoYu",MARGIN_LEFT,WINDOW_HEIGHT-parseInt(setFontSize)*2);
+    cxt.fillText("FaYe",MARGIN_LEFT,WINDOW_HEIGHT-parseInt(setFontSize));
     //cxt.fillText("For You",MARGIN_LEFT,500);
     //cxt.fillText("Fa   Ye ",MARGIN_LEFT,580);
 
