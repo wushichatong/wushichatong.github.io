@@ -3,6 +3,10 @@
  */
 var WINDOW_HEIGHT=600;
 var WINDOW_WIDTH=800;
+var WINDOW_HEIGHT_TURN=WINDOW_HEIGHT;
+var WINDOW_WIDTH_TURN=WINDOW_WIDTH;
+
+var setFonsize=20;//random set
 
 const LengthNum=147;
 var RADIUS=Math.round(WINDOW_WIDTH*4/5/LengthNum)-1;
@@ -19,18 +23,15 @@ const VISCOSITY=0.4;
 
 window.onload=function(){
     //WINDOW_HEIGHT=document.body.clientHeight;
-    WINDOW_WIDTH=document.body.clientWidth;
-    WINDOW_HEIGHT=document.documentElement.clientHeight;
+    //WINDOW_WIDTH=document.body.clientWidth;
+    //WINDOW_HEIGHT=document.documentElement.clientHeight;
     //WINDOW_WIDTH=document.documentElement.clientWidth;    // auto size
-    //alert(WINDOW_HEIGHT);
-    //alert(WINDOW_WIDTH);
-    MARGIN_LEFT=Math.round(WINDOW_WIDTH/10);
-    RADIUS=Math.round(WINDOW_WIDTH*4/5/LengthNum)-1;
-    MARGIN_TOP=WINDOW_HEIGHT/2-25*(RADIUS+1)-60;
     var canvas=document.getElementById("canvas");
     var context=canvas.getContext("2d");
 
-
+    findDimensions();//update the WINDOW_para
+    WINDOW_HEIGHT=WINDOW_HEIGHT_TURN;
+    WINDOW_WIDTH=WINDOW_WIDTH_TURN;
     canvas.width=WINDOW_WIDTH;
     canvas.height=WINDOW_HEIGHT;
 
@@ -79,8 +80,44 @@ function update(){
         curShowTimeSeconds = nextShowTimeSeconds;
     }
     updateBalls();
+    //updateScreen(context);
+    window.onresize=findDimensions;
     console.log(balls.length);
 }
+
+
+function findDimensions()  {//函数：获取尺寸
+      var winWidth;
+      var winHeight;
+      //获取窗口宽度
+      if (window.innerWidth)
+           winWidth = window.innerWidth;
+      else if ((document.body) && (document.body.clientWidth))
+           winWidth = document.body.clientWidth;
+      //获取窗口高度
+       if (window.innerHeight)
+           winHeight = window.innerHeight;
+       else if ((document.body) && (document.body.clientHeight))
+           winHeight = document.body.clientHeight;
+      //通过深入Document内部对body进行检测，获取窗口大小
+    if (document.documentElement  && document.documentElement.clientHeight && document.documentElement.clientWidth)
+     {
+           winHeight = document.documentElement.clientHeight;
+           winWidth = document.documentElement.clientWidth;
+      }
+        WINDOW_HEIGHT_TURN=winHeight;
+        WINDOW_WIDTH_TURN=winWidth;
+        //alert(WINDOW_HEIGHT);
+        //alert(WINDOW_WIDTH);
+
+}
+/*function updateScreen(context){
+    WINDOW_HEIGHT=document.documentElement.clientHeight; // auto size
+    WINDOW_WIDTH=document.documentElement.clientWidth;
+    MARGIN_LEFT=Math.round(WINDOW_WIDTH/10);
+    RADIUS=Math.round(WINDOW_WIDTH*4/5/LengthNum)-1;
+    MARGIN_TOP=WINDOW_HEIGHT/2-25*(RADIUS+1)-60;
+}*/
 function updateBalls(){
     for(var i=0;i<balls.length;i++) {
         balls[i].x += balls[i].vx;
@@ -131,7 +168,21 @@ function getCurrentShowTime(){
     return ret>=0?ret:0;
 }
 function render(cxt){
+
+
     cxt.clearRect(0,0,WINDOW_WIDTH,WINDOW_HEIGHT);//refresh the
+    if(WINDOW_HEIGHT!=WINDOW_HEIGHT_TURN||WINDOW_WIDTH!=WINDOW_WIDTH_TURN)
+    {
+        var canvas=document.getElementById("canvas");
+        WINDOW_HEIGHT=WINDOW_HEIGHT_TURN;
+        WINDOW_WIDTH=WINDOW_WIDTH_TURN;
+        canvas.width=WINDOW_WIDTH;
+        canvas.height=WINDOW_HEIGHT;//change the size of canvas
+        MARGIN_LEFT=Math.round(WINDOW_WIDTH/10);
+        RADIUS=Math.round(WINDOW_WIDTH*4/5/LengthNum)-1;
+        MARGIN_TOP=WINDOW_HEIGHT/2-25*(RADIUS+1)-60;
+         }
+
     var day=parseInt(curShowTimeSeconds/3600/24);
     var hour=parseInt((curShowTimeSeconds-day*24*3600)/3600);
     var minute=parseInt((curShowTimeSeconds-day*24*3600-hour*3600)/60);
