@@ -34,7 +34,7 @@ window.onload=function(){
     WINDOW_WIDTH=WINDOW_WIDTH_TURN;
     MARGIN_LEFT=Math.round(WINDOW_WIDTH/10);
     RADIUS=Math.round(WINDOW_WIDTH*4/5/LengthNum)-1;
-    MARGIN_TOP=WINDOW_HEIGHT/2-25*(RADIUS+1)-60;
+    MARGIN_TOP=WINDOW_HEIGHT/2-25*(RADIUS+1);
 
     canvas.width=WINDOW_WIDTH;
     canvas.height=WINDOW_HEIGHT;
@@ -131,7 +131,7 @@ function updateBalls(){
         if (balls[i].y >= WINDOW_HEIGHT - RADIUS) {
             balls[i].y = WINDOW_HEIGHT - RADIUS;
             balls[i].vy = -balls[i].vy * (1-VISCOSITY);
-            balls[i].vx = 1.2*balls[i].vx ;
+            balls[i].vx = 1.1*balls[i].vx ;
 
         }
         /*      if (balls[i].x>= WINDOW_WIDTH - RADIUS) {
@@ -227,7 +227,7 @@ function render(cxt){
     var temp=setFontSize+"px "+"Georgia";
     cxt.font=temp;
     //alert(cxt.font);
-    cxt.fillText("COUNTDOWN!",(WINDOW_WIDTH-8.5*parseInt(setFontSize))/2,WINDOW_HEIGHT/2+10*(RADIUS+1));
+    cxt.fillText("COUNTDOWN!",(WINDOW_WIDTH-7.5*parseInt(setFontSize))/2,WINDOW_HEIGHT/2+10*(RADIUS+1));
     cxt.textAlign="start";
 
     //setFontSize="20";

@@ -29,12 +29,13 @@
       <file leaf-file-name="countdown.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/countdown.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2503" max-vertical-offset="3287">
-              <caret line="233" column="35" selection-start-line="233" selection-start-column="35" selection-end-line="233" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2161" max-vertical-offset="2812">
+              <caret line="229" column="47" selection-start-line="229" selection-start-column="47" selection-end-line="229" selection-end-column="47" />
               <folding>
                 <element signature="n#!!block;n#update#0" expanded="false" />
                 <element signature="n#!!block;n#findDimensions#0" expanded="false" />
-                <element signature="e#4274#4583#0" expanded="false" />
+                <element signature="e#4271#4580#0" expanded="false" />
+                <element signature="n#!!block;n#updateBalls#0" expanded="false" />
                 <element signature="n#!!block;n#addBalls#0" expanded="false" />
                 <element signature="n#!!block;n#renderDigit#0" expanded="false" />
               </folding>
@@ -45,8 +46,8 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4574639" vertical-offset="0" max-vertical-offset="623">
-              <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+            <state vertical-scroll-proportion="0.030497592" vertical-offset="0" max-vertical-offset="623">
+              <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -188,7 +189,11 @@
       <created>1421726770758</created>
       <updated>1421726770758</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="dynamic font-size and position change">
+      <created>1421730378114</created>
+      <updated>1421730378114</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -231,7 +236,8 @@
       <TodoPanelSettings />
     </option>
     <MESSAGE value="//resize the screen &#10;//fix the initial state" />
-    <option name="LAST_COMMIT_MESSAGE" value="//resize the screen &#10;//fix the initial state" />
+    <MESSAGE value="dynamic font-size and position change" />
+    <option name="LAST_COMMIT_MESSAGE" value="dynamic font-size and position change" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -239,12 +245,13 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/countdown.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2503" max-vertical-offset="3287">
-          <caret line="233" column="35" selection-start-line="233" selection-start-column="35" selection-end-line="233" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2161" max-vertical-offset="2812">
+          <caret line="229" column="47" selection-start-line="229" selection-start-column="47" selection-end-line="229" selection-end-column="47" />
           <folding>
             <element signature="n#!!block;n#update#0" expanded="false" />
             <element signature="n#!!block;n#findDimensions#0" expanded="false" />
-            <element signature="e#4274#4583#0" expanded="false" />
+            <element signature="e#4271#4580#0" expanded="false" />
+            <element signature="n#!!block;n#updateBalls#0" expanded="false" />
             <element signature="n#!!block;n#addBalls#0" expanded="false" />
             <element signature="n#!!block;n#renderDigit#0" expanded="false" />
           </folding>
@@ -253,8 +260,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4574639" vertical-offset="0" max-vertical-offset="623">
-          <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.030497592" vertical-offset="0" max-vertical-offset="623">
+          <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
           <folding />
         </state>
       </provider>
