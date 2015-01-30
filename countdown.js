@@ -220,18 +220,18 @@ function render(cxt){
         cxt.fill();
     }
     setFontSize=Math.max(WINDOW_HEIGHT,WINDOW_WIDTH)/15;
-    var temp=setFontSize+"px "+"Georgia";
-    cxt.font=temp;
+    //var temp=setFontSize+"px "+"Georgia";
+    cxt.font=setFontSize+"px "+"Georgia";
     //alert(cxt.font);
     cxt.fillText("COUNTDOWN!",(WINDOW_WIDTH-7.5*parseInt(setFontSize))/2,WINDOW_HEIGHT/2+Math.max(WINDOW_HEIGHT,WINDOW_WIDTH)/11);//10*(RADIUS+1)
     cxt.textAlign="start";
 
     //setFontSize="20";
-    cxt.fillStyle="rgb(0,102,153)";
-   setFontSize=Math.max(WINDOW_HEIGHT,WINDOW_WIDTH)/60;
-    cxt.font=setFontSize+"px "+"Georgia";
-    cxt.fillText("FoYu",MARGIN_LEFT,WINDOW_HEIGHT-parseInt(setFontSize)*2);
-    cxt.fillText("FaYe",MARGIN_LEFT,WINDOW_HEIGHT-parseInt(setFontSize));
+    //cxt.fillStyle="rgb(0,102,153)";
+   //setFontSize=Math.max(WINDOW_HEIGHT,WINDOW_WIDTH)/60;
+    //cxt.font=setFontSize+"px "+"Georgia";
+    //cxt.fillText("FoYu",MARGIN_LEFT,WINDOW_HEIGHT-parseInt(setFontSize)*2);
+    //cxt.fillText("FaYe",MARGIN_LEFT,WINDOW_HEIGHT-parseInt(setFontSize));
     //cxt.fillText("For You",MARGIN_LEFT,500);
     //cxt.fillText("Fa   Ye ",MARGIN_LEFT,580);
 
