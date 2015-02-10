@@ -26,14 +26,14 @@ var num=0;
 window.onload=function(){
     //WINDOW_HEIGHT=document.body.clientHeight;
     //WINDOW_WIDTH=document.body.clientWidth;
-    //WINDOW_HEIGHT=document.documentElement.clientHeight;
-    //WINDOW_WIDTH=document.documentElement.clientWidth;    // auto size
+    WINDOW_HEIGHT=document.documentElement.clientHeight;
+    WINDOW_WIDTH=document.documentElement.clientWidth;    // auto size
     var canvas=document.getElementById("canvas");
     var context=canvas.getContext("2d");
 
    //findDimensions();//update the WINDOW_para
-    WINDOW_HEIGHT=WINDOW_HEIGHT_TURN;
-    WINDOW_WIDTH=WINDOW_WIDTH_TURN;
+    //WINDOW_HEIGHT=WINDOW_HEIGHT_TURN;
+    //WINDOW_WIDTH=WINDOW_WIDTH_TURN;
     MARGIN_LEFT=Math.round(WINDOW_WIDTH/10);
     RADIUS=Math.round(WINDOW_WIDTH*4/5/LengthNum)-1;
     MARGIN_TOP=WINDOW_HEIGHT/2-30*(RADIUS+1)-60;
@@ -234,6 +234,7 @@ function render(cxt){
     cxt.font="italic bold "+setFontSize+"px "+"Verdana, Geneva, sans-serif";
     //alert(cxt.font);
     cxt.save();
+    cxt.fillStyle="blue";
     cxt.textAlign="center";
     cxt.textBaseline="ideographic";
     cxt.shadowColor="gray";
