@@ -31,7 +31,7 @@ window.onload=function(){
     var canvas=document.getElementById("canvas");
     var context=canvas.getContext("2d");
 
-    findDimensions();//update the WINDOW_para
+   //findDimensions();//update the WINDOW_para
     WINDOW_HEIGHT=WINDOW_HEIGHT_TURN;
     WINDOW_WIDTH=WINDOW_WIDTH_TURN;
     MARGIN_LEFT=Math.round(WINDOW_WIDTH/10);
@@ -221,8 +221,8 @@ function render(cxt){
 
         cxt.fill();
     }
-    cxt.save();
-    /*var globalgradient=cxt.createRadialGradient(0,WINDOW_WIDTH/2,WINDOW_HEIGHT/2,WINDOW_HEIGHT,WINDOW_WIDTH/2,WINDOW_HEIGHT/4*3);
+    /*cxt.save();
+    var globalgradient=cxt.createRadialGradient(0,WINDOW_WIDTH/2,WINDOW_HEIGHT/2,WINDOW_HEIGHT,WINDOW_WIDTH/2,WINDOW_HEIGHT/4*3);
     globalgradient.addColorStop(0,"#035");
     globalgradient.addColorStop(1,"#black");
     cxt.fillStyle=globalgradient;
