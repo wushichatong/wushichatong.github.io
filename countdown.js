@@ -1,8 +1,8 @@
 /**
  * Created by JamesMartins on 2015/1/18.
  */
-var WINDOW_HEIGHT=600;
-var WINDOW_WIDTH=800;
+var WINDOW_HEIGHT=800;
+var WINDOW_WIDTH=1366;
 var WINDOW_HEIGHT_TURN=WINDOW_HEIGHT;
 var WINDOW_WIDTH_TURN=WINDOW_WIDTH;
 
@@ -19,27 +19,31 @@ var curShowTimeSeconds=0;
 
 var balls=[];
 const colors=["#33B5E5","#0099CC","#AA66CC","#9933CC","#99CC00","#669900","#FFBB33","#FF8800","#FF4444","#CC0000"];
-const VISCOSITY=0.4;
+const VISCOSITY=0.5;
 
 var angle=0;
 var num=0;
 window.onload=function(){
-    //WINDOW_HEIGHT=document.body.clientHeight;
-    //WINDOW_WIDTH=document.body.clientWidth;
-    WINDOW_HEIGHT=document.documentElement.clientHeight;
-    WINDOW_WIDTH=document.documentElement.clientWidth;    // auto size
+    WINDOW_HEIGHT=document.body.clientHeight;
+    WINDOW_WIDTH=document.body.clientWidth;
+    //WINDOW_HEIGHT=document.documentElement.clientHeight;
+    //WINDOW_WIDTH=document.documentElement.clientWidth;    // auto size
+
     var canvas=document.getElementById("canvas");
     var context=canvas.getContext("2d");
+    canvas.width=WINDOW_WIDTH;
+    canvas.height=WINDOW_HEIGHT;
 
-   //findDimensions();//update the WINDOW_para
+   findDimensions();//update the WINDOW_para
     //WINDOW_HEIGHT=WINDOW_HEIGHT_TURN;
     //WINDOW_WIDTH=WINDOW_WIDTH_TURN;
     MARGIN_LEFT=Math.round(WINDOW_WIDTH/10);
+    //alert(MARGIN_LEFT)
     RADIUS=Math.round(WINDOW_WIDTH*4/5/LengthNum)-1;
+    //alert(RADIUS);
     MARGIN_TOP=WINDOW_HEIGHT/2-30*(RADIUS+1)-60;
 
-    canvas.width=WINDOW_WIDTH;
-    canvas.height=WINDOW_HEIGHT;
+
 
 
     // context.font="50px Georgia";
@@ -231,7 +235,7 @@ function render(cxt){
 
     setFontSize=Math.max(WINDOW_HEIGHT,WINDOW_WIDTH)/15;
     //var temp=setFontSize+"px "+"Georgia";
-    cxt.font="italic bold "+setFontSize+"px "+"Verdana, Geneva, sans-serif";
+    cxt.font="bold "+setFontSize+"px "+"Verdana, Geneva, sans-serif";
     //alert(cxt.font);
     cxt.save();
     cxt.fillStyle="blue";
@@ -250,7 +254,7 @@ function render(cxt){
     cxt.textAlign="center";
     cxt.textBaseline="ideographic";
     setFontSize=Math.max(WINDOW_HEIGHT,WINDOW_WIDTH)/15;
-    cxt.font="italic bold "+setFontSize+"px "+"Verdana, Geneva, sans-serif";
+    cxt.font="bold "+setFontSize+"px "+"Verdana, Geneva, sans-serif";
    var gr=cxt.createLinearGradient((WINDOW_WIDTH-5*parseInt(setFontSize))/2,0
         ,(WINDOW_WIDTH+5*parseInt(setFontSize))/2,0);
     gr.addColorStop(0,"red");
@@ -273,7 +277,7 @@ function render(cxt){
     cxt.globalAlpha=Math.abs(Math.sin(angle));
     if(angle>500)
         angle=0;
-    else angle+=0.05;
+    else angle+=0.09;
 
     if(num>30)
         isIncrease=false;
