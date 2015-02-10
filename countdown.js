@@ -14,13 +14,15 @@ var RADIUS=Math.round(WINDOW_WIDTH*4/5/LengthNum)-1;
 var MARGIN_LEFT=0;
 var MARGIN_TOP=60;
 
-const endTime=new Date(2015,2,5,0,0,0);
+const endTime=new Date(2015,1,13,12,0,0);
 var curShowTimeSeconds=0;
 
 var balls=[];
 const colors=["#33B5E5","#0099CC","#AA66CC","#9933CC","#99CC00","#669900","#FFBB33","#FF8800","#FF4444","#CC0000"];
 const VISCOSITY=0.4;
 
+var angle=0;
+var num=0;
 window.onload=function(){
     //WINDOW_HEIGHT=document.body.clientHeight;
     //WINDOW_WIDTH=document.body.clientWidth;
@@ -34,7 +36,7 @@ window.onload=function(){
     WINDOW_WIDTH=WINDOW_WIDTH_TURN;
     MARGIN_LEFT=Math.round(WINDOW_WIDTH/10);
     RADIUS=Math.round(WINDOW_WIDTH*4/5/LengthNum)-1;
-    MARGIN_TOP=WINDOW_HEIGHT/2-25*(RADIUS+1);
+    MARGIN_TOP=WINDOW_HEIGHT/2-30*(RADIUS+1)-60;
 
     canvas.width=WINDOW_WIDTH;
     canvas.height=WINDOW_HEIGHT;
@@ -184,7 +186,7 @@ function render(cxt){
         canvas.height=WINDOW_HEIGHT;//change the size of canvas
         MARGIN_LEFT=Math.round(WINDOW_WIDTH/10);
         RADIUS=Math.round(WINDOW_WIDTH*4/5/LengthNum)-1;
-        MARGIN_TOP=WINDOW_HEIGHT/2-25*(RADIUS+1)-60;
+        MARGIN_TOP=WINDOW_HEIGHT/2-30*(RADIUS+1)-60;
          }
 
     var day=parseInt(curShowTimeSeconds/3600/24);
@@ -219,12 +221,72 @@ function render(cxt){
 
         cxt.fill();
     }
+    cxt.save();
+    /*var globalgradient=cxt.createRadialGradient(0,WINDOW_WIDTH/2,WINDOW_HEIGHT/2,WINDOW_HEIGHT,WINDOW_WIDTH/2,WINDOW_HEIGHT/4*3);
+    globalgradient.addColorStop(0,"#035");
+    globalgradient.addColorStop(1,"#black");
+    cxt.fillStyle=globalgradient;
+    cxt.fillRect(0,0,WINDOW_WIDTH,WINDOW_HEIGHT);
+    cxt.restore();*/
+
     setFontSize=Math.max(WINDOW_HEIGHT,WINDOW_WIDTH)/15;
     //var temp=setFontSize+"px "+"Georgia";
-    cxt.font=setFontSize+"px "+"Georgia";
+    cxt.font="italic bold "+setFontSize+"px "+"Verdana, Geneva, sans-serif";
     //alert(cxt.font);
-    cxt.fillText("COUNTDOWN!",(WINDOW_WIDTH-7.5*parseInt(setFontSize))/2,WINDOW_HEIGHT/2+Math.max(WINDOW_HEIGHT,WINDOW_WIDTH)/11);//10*(RADIUS+1)
-    cxt.textAlign="start";
+    cxt.save();
+    cxt.textAlign="center";
+    cxt.textBaseline="ideographic";
+    cxt.shadowColor="gray";
+    cxt.shadowOffsetX=5;
+    cxt.shadowOffsetY=5;
+    cxt.shadowBlur=20;
+    cxt.fillText("衡阳市大学生联合会",(WINDOW_WIDTH)/2,WINDOW_HEIGHT/24*13);//10*(RADIUS+1)
+    //cxt.textAlign="center";
+    cxt.restore();
+
+
+    cxt.save();
+    cxt.textAlign="center";
+    cxt.textBaseline="ideographic";
+    setFontSize=Math.max(WINDOW_HEIGHT,WINDOW_WIDTH)/15;
+    cxt.font="italic bold "+setFontSize+"px "+"Verdana, Geneva, sans-serif";
+   var gr=cxt.createLinearGradient((WINDOW_WIDTH-5*parseInt(setFontSize))/2,0
+        ,(WINDOW_WIDTH+5*parseInt(setFontSize))/2,0);
+    gr.addColorStop(0,"red");
+    gr.addColorStop(0.4,"orange");
+    gr.addColorStop(0.6,"blue");
+    gr.addColorStop(1,"green");
+   cxt.fillStyle=gr;
+    cxt.fillText("四周年年会",(WINDOW_WIDTH)/2,WINDOW_HEIGHT/24*18);
+    cxt.restore();
+
+
+    cxt.save();
+    setFontSize=Math.max(WINDOW_HEIGHT,WINDOW_WIDTH)/30;
+    setFontSize+=parseFloat(num/10);
+    cxt.font=setFontSize+"px "+"Georgia";
+    cxt.textAlign="left";
+    cxt.textBaseline="ideographic";
+    cxt.shadowColor="gray";
+    cxt.fillStyle="blue";
+    cxt.globalAlpha=Math.abs(Math.sin(angle));
+    if(angle>500)
+        angle=0;
+    else angle+=0.05;
+
+    if(num>30)
+        isIncrease=false;
+    else if(num<=0)
+        isIncrease=true;
+    if(isIncrease)
+        num++;
+    else num--;
+
+
+    cxt.fillText("——有趣的灵魂 总会相遇",MARGIN_LEFT,WINDOW_HEIGHT/24*21);//10*(RADIUS+1)
+    //cxt.textAlign="center";
+    cxt.restore();
+
 
     //setFontSize="20";
     //cxt.fillStyle="rgb(0,102,153)";
