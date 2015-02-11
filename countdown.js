@@ -23,6 +23,7 @@ const VISCOSITY=0.5;
 
 var angle=0;
 var num=0;
+var isIncrease;
 window.onload=function(){
     WINDOW_HEIGHT=document.body.clientHeight;
     WINDOW_WIDTH=document.body.clientWidth;
@@ -33,6 +34,11 @@ window.onload=function(){
     var context=canvas.getContext("2d");
     canvas.width=WINDOW_WIDTH;
     canvas.height=WINDOW_HEIGHT;
+
+    var canvas1=document.getElementById("canvas1");
+    var context1=canvas1.getContext("2d");
+    canvas1.width=WINDOW_WIDTH;
+    canvas1.height=WINDOW_HEIGHT;
 
    findDimensions();//update the WINDOW_para
     //WINDOW_HEIGHT=WINDOW_HEIGHT_TURN;
@@ -49,12 +55,18 @@ window.onload=function(){
 
     // context.font="50px Georgia";
     //context.fillText("Hello World!",400,400);
+    context1.save();
+    var backgroundImage=new Image();
+    backgroundImage.src="background.jpg";
+    context1.globalAlpha=0.005;
+    context1.drawImage(backgroundImage,0,0,2005,1338,0,0,WINDOW_WIDTH,WINDOW_HEIGHT);
+    context1.restore();
 
-
+    //alert(canvas1.height);
     curShowTimeSeconds=getCurrentShowTime();
     setInterval(
         function() {
-            render(context);
+            render(context,context1);
             update();
         },
         50
@@ -166,10 +178,41 @@ function getCurrentShowTime(){
 
     return ret>=0?ret:0;
 }
-function render(cxt){
+function render(cxt,context1){
 
 
     cxt.clearRect(0,0,WINDOW_WIDTH,WINDOW_HEIGHT);//refresh the
+    cxt.save();
+    var gr=cxt.createLinearGradient(WINDOW_WIDTH,0,WINDOW_WIDTH,WINDOW_HEIGHT);
+    gr.addColorStop(0,"#ac4");
+    gr.addColorStop(0.5,"#ddd");
+    gr.addColorStop(0.6,"#dce");
+    gr.addColorStop(0.7,"#dff");
+    gr.addColorStop(0.8,"#edf");
+    gr.addColorStop(0.9,"#ee8");
+    gr.addColorStop(0.98,"#ee3");
+    gr.addColorStop(1,"#fff");
+
+    cxt.fillStyle=gr;
+    cxt.globalAlpha=1
+    cxt.fillRect(0,0,WINDOW_WIDTH,WINDOW_HEIGHT);
+    cxt.restore();
+
+    /*cxt.save();
+    var backgroundImage=new Image();
+    backgroundImage.src="background.jpg";
+    cxt.globalAlpha=0.5;
+    cxt.drawImage(backgroundImage,0,0,2005,1338,0,0,WINDOW_WIDTH,WINDOW_HEIGHT);
+    cxt.restore();*/
+    context1.save();
+    var backgroundImage=new Image();
+    backgroundImage.src="background.jpg";
+    context1.globalAlpha=1;
+    context1.drawImage(backgroundImage,0,0,2005,1338,0,0,WINDOW_WIDTH,WINDOW_HEIGHT);
+    context1.restore();
+
+
+
     if(WINDOW_HEIGHT!=WINDOW_HEIGHT_TURN||WINDOW_WIDTH!=WINDOW_WIDTH_TURN)
     {
         var canvas=document.getElementById("canvas");
@@ -177,9 +220,11 @@ function render(cxt){
         WINDOW_WIDTH=WINDOW_WIDTH_TURN;
         canvas.width=WINDOW_WIDTH;
         canvas.height=WINDOW_HEIGHT;//change the size of canvas
+        canvas1.width=WINDOW_WIDTH;
+        canvas1.height=WINDOW_HEIGHT;
         MARGIN_LEFT=WINDOW_WIDTH/5*1.5;
         RADIUS=Math.round(WINDOW_WIDTH*2.5/5/LengthNum)-1;
-        MARGIN_TOP=WINDOW_HEIGHT/24*5;
+        MARGIN_TOP=WINDOW_HEIGHT/24*5.3;
          }
 
     var hour=parseInt(curShowTimeSeconds/3600);
@@ -208,26 +253,20 @@ function render(cxt){
 
         cxt.fill();
     }
-    /*cxt.save();
-    var globalgradient=cxt.createRadialGradient(0,WINDOW_WIDTH/2,WINDOW_HEIGHT/2,WINDOW_HEIGHT,WINDOW_WIDTH/2,WINDOW_HEIGHT/4*3);
-    globalgradient.addColorStop(0,"#035");
-    globalgradient.addColorStop(1,"#black");
-    cxt.fillStyle=globalgradient;
-    cxt.fillRect(0,0,WINDOW_WIDTH,WINDOW_HEIGHT);
-    cxt.restore();*/
+
 
     setFontSize=Math.max(WINDOW_HEIGHT,WINDOW_WIDTH)/18;
     //var temp=setFontSize+"px "+"Georgia";
     cxt.font="bold "+setFontSize+"px "+"Verdana, Geneva, sans-serif";
     //alert(cxt.font);
     cxt.save();
-    cxt.fillStyle="green";
+    cxt.fillStyle="red";
     cxt.textAlign="center";
     cxt.textBaseline="ideographic";
-    cxt.shadowColor="gray";
+    /*cxt.shadowColor="gray";
     cxt.shadowOffsetX=3;
     cxt.shadowOffsetY=3;
-    cxt.shadowBlur=2;
+    cxt.shadowBlur=2;*/
     cxt.fillText("衡阳市大学生联合会四周年",(WINDOW_WIDTH)/2,WINDOW_HEIGHT/24*3.5);//10*(RADIUS+1)
     //cxt.textAlign="center";
     cxt.restore();
@@ -238,15 +277,13 @@ function render(cxt){
     cxt.textBaseline="bottom";
     setFontSize=Math.max(WINDOW_HEIGHT,WINDOW_WIDTH)/18;
     cxt.font="bold "+setFontSize+"px "+"Verdana, Geneva, sans-serif";
-   cxt.fillStyle=gr;
-   //cxt.fillText("四周年",(WINDOW_WIDTH)/2,WINDOW_HEIGHT/24*7);
     setFontSize=Math.max(WINDOW_HEIGHT,WINDOW_WIDTH)/25;
-    var gr=cxt.createLinearGradient((WINDOW_WIDTH/24*3-5*parseInt(setFontSize))/2,0
-        ,(WINDOW_WIDTH/24*3+5*parseInt(setFontSize))/2,0);
-    gr.addColorStop(0,"red");
-    gr.addColorStop(0.4,"orange");
-    gr.addColorStop(0.6,"blue");
-    gr.addColorStop(1,"green");
+    var gr=cxt.createLinearGradient((WINDOW_WIDTH/24*3.5-5/2*parseInt(setFontSize)),0
+        ,(WINDOW_WIDTH/24*3.5+5/2*parseInt(setFontSize)),0);
+    gr.addColorStop(0,"coral");
+    gr.addColorStop(0.4,"brown");
+    gr.addColorStop(0.6,"olive");
+    gr.addColorStop(1,"gold");
     cxt.fillStyle=gr;
     cxt.font="bold "+setFontSize+"px "+"Verdana, Geneva, sans-serif";
     cxt.fillText("年会倒计时：",MARGIN_LEFT,MARGIN_TOP+(RADIUS+1)*5*2);
