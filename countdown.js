@@ -184,7 +184,7 @@ function render(cxt,context1){
     cxt.clearRect(0,0,WINDOW_WIDTH,WINDOW_HEIGHT);//refresh the
     cxt.save();
     var gr=cxt.createLinearGradient(WINDOW_WIDTH,0,WINDOW_WIDTH,WINDOW_HEIGHT);
-    gr.addColorStop(0,"#ac4");
+    gr.addColorStop(0,"#fff");
     gr.addColorStop(0.5,"#ddd");
     gr.addColorStop(0.6,"#dce");
     gr.addColorStop(0.7,"#dff");
@@ -260,6 +260,7 @@ function render(cxt,context1){
     cxt.font="bold "+setFontSize+"px "+"Verdana, Geneva, sans-serif";
     //alert(cxt.font);
     cxt.save();
+
 
     cxt.fillStyle="red";
     cxt.textAlign="center";
