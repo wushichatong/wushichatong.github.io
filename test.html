@@ -8,10 +8,37 @@
     <script>
 
         window.onload=function() {
+            var myCanvas=document.getElementById("myCanvasTag1");
+            var myCanvas2=document.getElementById("myCanvasTag2");
             var mycontext1=document.getElementById("myCanvasTag1").getContext('2d');
             var mycontext2=document.getElementById("myCanvasTag2").getContext('2d');
             var mycontext3=document.getElementById("myCanvasTag3").getContext('2d');
             var mycontext4=document.getElementById("myCanvasTag4").getContext('2d');
+            var winWidth;
+            var winHeight;
+            //获取窗口宽度
+            if (window.innerWidth)
+                winWidth = window.innerWidth;
+            else if ((document.body) && (document.body.clientWidth))
+                winWidth = document.body.clientWidth;
+            //获取窗口高度
+            if (window.innerHeight)
+                winHeight = window.innerHeight;
+            else if ((document.body) && (document.body.clientHeight))
+                winHeight = document.body.clientHeight;
+            //通过深入Document内部对body进行检测，获取窗口大小
+            if (document.documentElement  && document.documentElement.clientHeight && document.documentElement.clientWidth)
+            {
+                winHeight = document.documentElement.clientHeight;
+                winWidth = document.documentElement.clientWidth;
+            }
+            WINDOW_HEIGHT_TURN=winHeight;
+            WINDOW_WIDTH_TURN=winWidth;
+            myCanvas.width=WINDOW_WIDTH_TURN;
+            myCanvas.height=WINDOW_HEIGHT_TURN;
+            myCanvas2.width=WINDOW_WIDTH_TURN;
+            myCanvas2.height=WINDOW_HEIGHT_TURN;
+
             // gradient 1
             var mygradient1=mycontext1.createLinearGradient(30,30,90,90);
             mygradient1.addColorStop(0,"#FF0000");
@@ -43,6 +70,7 @@
 <body>
 <div style="margin-left:30px;">
     <canvas id="myCanvasTag1" width="100" height="724" style="border: 10px blue solid">
+
 
     </canvas>
     <br />
