@@ -260,6 +260,7 @@ function render(cxt,context1){
     cxt.font="bold "+setFontSize+"px "+"Verdana, Geneva, sans-serif";
     //alert(cxt.font);
     cxt.save();
+
     cxt.fillStyle="red";
     cxt.textAlign="center";
     cxt.textBaseline="ideographic";
