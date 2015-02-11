@@ -8,8 +8,8 @@ var WINDOW_WIDTH_TURN=WINDOW_WIDTH;
 
 var setFontSize=20;//random set
 
-const LengthNum=147;
-var RADIUS=Math.round(WINDOW_WIDTH*4/5/LengthNum)-1;
+const LengthNum=108;
+var RADIUS=Math.round(WINDOW_WIDTH*2/5/LengthNum)-1;
 
 var MARGIN_LEFT=0;
 var MARGIN_TOP=60;
@@ -37,11 +37,12 @@ window.onload=function(){
    findDimensions();//update the WINDOW_para
     //WINDOW_HEIGHT=WINDOW_HEIGHT_TURN;
     //WINDOW_WIDTH=WINDOW_WIDTH_TURN;
-    MARGIN_LEFT=Math.round(WINDOW_WIDTH/10);
+    MARGIN_LEFT=WINDOW_WIDTH/5*1.75;
     //alert(MARGIN_LEFT)
-    RADIUS=Math.round(WINDOW_WIDTH*4/5/LengthNum)-1;
+    RADIUS=Math.round(WINDOW_WIDTH*2.5/5/LengthNum)-1;
     //alert(RADIUS);
-    MARGIN_TOP=WINDOW_HEIGHT/2-30*(RADIUS+1)-60;
+    MARGIN_TOP=WINDOW_HEIGHT/24*8
+    ;
 
 
 
@@ -61,32 +62,27 @@ window.onload=function(){
 };
 function update(){
     var nextShowTimeSeconds=getCurrentShowTime();
-    var nextDay=parseInt(nextShowTimeSeconds/3600/24);
-    var nextHour=parseInt((nextShowTimeSeconds-nextDay*24*3600)/3600);
-    var nextMinute=parseInt((nextShowTimeSeconds-nextDay*24*3600-nextHour*3600)/60);
+
+    var nextHour=parseInt(nextShowTimeSeconds/3600);
+    var nextMinute=parseInt((nextShowTimeSeconds-nextHour*3600)/60);
     var nextSeconds=parseInt(nextShowTimeSeconds%60);
 
-    var curDay=parseInt(curShowTimeSeconds/3600/24);
-    var curHour=parseInt((curShowTimeSeconds-curDay*24*3600)/3600);
-    var curMinute=parseInt((curShowTimeSeconds-curDay*24*3600-curHour*3600)/60);
+    var curHour=parseInt(curShowTimeSeconds/3600);
+    var curMinute=parseInt((curShowTimeSeconds-curHour*3600)/60);
     var curSeconds=parseInt(curShowTimeSeconds%60);
     if(nextSeconds!=curSeconds) {
-        if(parseInt(curDay/10)!=parseInt(nextDay/10))
-            addBalls(MARGIN_LEFT,MARGIN_TOP,parseInt(curDay/10));
-        if(parseInt(curDay%10)!=parseInt(nextDay%10))
-            addBalls(MARGIN_LEFT+15*(RADIUS+1),MARGIN_TOP,parseInt(curDay%10));
         if(parseInt(curHour/10)!=parseInt(nextHour/10))
-            addBalls(MARGIN_LEFT+39*(RADIUS+1),MARGIN_TOP,parseInt(curHour/10));
+            addBalls(MARGIN_LEFT,MARGIN_TOP,parseInt(curHour/10));
         if(parseInt(curHour%10)!=parseInt(nextHour%10))
-            addBalls(MARGIN_LEFT+54*(RADIUS+1),MARGIN_TOP,parseInt(curHour%10));
+            addBalls(MARGIN_LEFT+15*(RADIUS+1),MARGIN_TOP,parseInt(curHour%10));
         if(parseInt(curMinute/10)!=parseInt(nextMinute/10))
-            addBalls(MARGIN_LEFT+78*(RADIUS+1),MARGIN_TOP,parseInt(curHour/10));
+            addBalls(MARGIN_LEFT+39*(RADIUS+1),MARGIN_TOP,parseInt(curHour/10));
         if(parseInt(curMinute%10)!=parseInt(nextMinute%10))
-            addBalls(MARGIN_LEFT+93*(RADIUS+1),MARGIN_TOP,parseInt(curHour%10));
+            addBalls(MARGIN_LEFT+54*(RADIUS+1),MARGIN_TOP,parseInt(curHour%10));
         if(parseInt(curSeconds/10)!=parseInt(nextSeconds/10))
-            addBalls(MARGIN_LEFT+117*(RADIUS+1),MARGIN_TOP,parseInt(curHour/10));
+            addBalls(MARGIN_LEFT+78*(RADIUS+1),MARGIN_TOP,parseInt(curHour/10));
         if(parseInt(curSeconds%10)!=parseInt(nextSeconds%10))
-            addBalls(MARGIN_LEFT+132*(RADIUS+1),MARGIN_TOP,parseInt(curHour%10));
+            addBalls(MARGIN_LEFT+93*(RADIUS+1),MARGIN_TOP,parseInt(curHour%10));
         curShowTimeSeconds = nextShowTimeSeconds;
     }
     updateBalls();
@@ -121,13 +117,6 @@ function findDimensions()  {//函数：获取尺寸
         //alert(WINDOW_WIDTH);
 
 }
-/*function updateScreen(context){
-    WINDOW_HEIGHT=document.documentElement.clientHeight; // auto size
-    WINDOW_WIDTH=document.documentElement.clientWidth;
-    MARGIN_LEFT=Math.round(WINDOW_WIDTH/10);
-    RADIUS=Math.round(WINDOW_WIDTH*4/5/LengthNum)-1;
-    MARGIN_TOP=WINDOW_HEIGHT/2-25*(RADIUS+1)-60;
-}*/
 function updateBalls(){
     for(var i=0;i<balls.length;i++) {
         balls[i].x += balls[i].vx;
@@ -188,33 +177,27 @@ function render(cxt){
         WINDOW_WIDTH=WINDOW_WIDTH_TURN;
         canvas.width=WINDOW_WIDTH;
         canvas.height=WINDOW_HEIGHT;//change the size of canvas
-        MARGIN_LEFT=Math.round(WINDOW_WIDTH/10);
-        RADIUS=Math.round(WINDOW_WIDTH*4/5/LengthNum)-1;
-        MARGIN_TOP=WINDOW_HEIGHT/2-30*(RADIUS+1)-60;
+        MARGIN_LEFT=WINDOW_WIDTH/5*1.5;
+        RADIUS=Math.round(WINDOW_WIDTH*2.5/5/LengthNum)-1;
+        MARGIN_TOP=WINDOW_HEIGHT/24*5;
          }
 
-    var day=parseInt(curShowTimeSeconds/3600/24);
-    var hour=parseInt((curShowTimeSeconds-day*24*3600)/3600);
-    var minute=parseInt((curShowTimeSeconds-day*24*3600-hour*3600)/60);
+    var hour=parseInt(curShowTimeSeconds/3600);
+    var minute=parseInt((curShowTimeSeconds-hour*3600)/60);
     var seconds=parseInt(curShowTimeSeconds%60);
 
-    renderDigit(MARGIN_LEFT,MARGIN_TOP,parseInt(day/10),cxt);
-    renderDigit(MARGIN_LEFT+15*(RADIUS+1),MARGIN_TOP,parseInt(day%10),cxt);
+    renderDigit(MARGIN_LEFT,MARGIN_TOP,parseInt(hour/10),cxt);
+    renderDigit(MARGIN_LEFT+15*(RADIUS+1),MARGIN_TOP,parseInt(hour%10),cxt);
 
     renderDigit(MARGIN_LEFT+30*(RADIUS+1),MARGIN_TOP,10,cxt);
 
-    renderDigit(MARGIN_LEFT+39*(RADIUS+1),MARGIN_TOP,parseInt(hour/10),cxt);
-    renderDigit(MARGIN_LEFT+54*(RADIUS+1),MARGIN_TOP,parseInt(hour%10),cxt);
+    renderDigit(MARGIN_LEFT+39*(RADIUS+1),MARGIN_TOP,parseInt(minute/10),cxt);
+    renderDigit(MARGIN_LEFT+54*(RADIUS+1),MARGIN_TOP,parseInt(minute%10),cxt);
 
     renderDigit(MARGIN_LEFT+69*(RADIUS+1),MARGIN_TOP,10,cxt);
 
-    renderDigit(MARGIN_LEFT+78*(RADIUS+1),MARGIN_TOP,parseInt(minute/10),cxt);
-    renderDigit(MARGIN_LEFT+93*(RADIUS+1),MARGIN_TOP,parseInt(minute%10),cxt);
-
-    renderDigit(MARGIN_LEFT+108*(RADIUS+1),MARGIN_TOP,10,cxt);
-
-    renderDigit(MARGIN_LEFT+117*(RADIUS+1),MARGIN_TOP,parseInt(seconds/10),cxt);
-    renderDigit(MARGIN_LEFT+132*(RADIUS+1),MARGIN_TOP,parseInt(seconds%10),cxt);
+    renderDigit(MARGIN_LEFT+78*(RADIUS+1),MARGIN_TOP,parseInt(seconds/10),cxt);
+    renderDigit(MARGIN_LEFT+93*(RADIUS+1),MARGIN_TOP,parseInt(seconds%10),cxt);
 
     for(var i=0;i<balls.length;i++){
         cxt.fillStyle=balls[i].color;
@@ -233,44 +216,50 @@ function render(cxt){
     cxt.fillRect(0,0,WINDOW_WIDTH,WINDOW_HEIGHT);
     cxt.restore();*/
 
-    setFontSize=Math.max(WINDOW_HEIGHT,WINDOW_WIDTH)/15;
+    setFontSize=Math.max(WINDOW_HEIGHT,WINDOW_WIDTH)/18;
     //var temp=setFontSize+"px "+"Georgia";
     cxt.font="bold "+setFontSize+"px "+"Verdana, Geneva, sans-serif";
     //alert(cxt.font);
     cxt.save();
-    cxt.fillStyle="blue";
+    cxt.fillStyle="green";
     cxt.textAlign="center";
     cxt.textBaseline="ideographic";
     cxt.shadowColor="gray";
-    cxt.shadowOffsetX=5;
-    cxt.shadowOffsetY=5;
-    cxt.shadowBlur=20;
-    cxt.fillText("衡阳市大学生联合会",(WINDOW_WIDTH)/2,WINDOW_HEIGHT/24*13);//10*(RADIUS+1)
+    cxt.shadowOffsetX=3;
+    cxt.shadowOffsetY=3;
+    cxt.shadowBlur=2;
+    cxt.fillText("衡阳市大学生联合会四周年",(WINDOW_WIDTH)/2,WINDOW_HEIGHT/24*3.5);//10*(RADIUS+1)
     //cxt.textAlign="center";
     cxt.restore();
 
 
     cxt.save();
-    cxt.textAlign="center";
-    cxt.textBaseline="ideographic";
-    setFontSize=Math.max(WINDOW_HEIGHT,WINDOW_WIDTH)/15;
+    cxt.textAlign="right";
+    cxt.textBaseline="bottom";
+    setFontSize=Math.max(WINDOW_HEIGHT,WINDOW_WIDTH)/18;
     cxt.font="bold "+setFontSize+"px "+"Verdana, Geneva, sans-serif";
-   var gr=cxt.createLinearGradient((WINDOW_WIDTH-5*parseInt(setFontSize))/2,0
-        ,(WINDOW_WIDTH+5*parseInt(setFontSize))/2,0);
+   cxt.fillStyle=gr;
+   //cxt.fillText("四周年",(WINDOW_WIDTH)/2,WINDOW_HEIGHT/24*7);
+    setFontSize=Math.max(WINDOW_HEIGHT,WINDOW_WIDTH)/25;
+    var gr=cxt.createLinearGradient((WINDOW_WIDTH/24*3-5*parseInt(setFontSize))/2,0
+        ,(WINDOW_WIDTH/24*3+5*parseInt(setFontSize))/2,0);
     gr.addColorStop(0,"red");
     gr.addColorStop(0.4,"orange");
     gr.addColorStop(0.6,"blue");
     gr.addColorStop(1,"green");
-   cxt.fillStyle=gr;
-    cxt.fillText("四周年年会",(WINDOW_WIDTH)/2,WINDOW_HEIGHT/24*18);
+    cxt.fillStyle=gr;
+    cxt.font="bold "+setFontSize+"px "+"Verdana, Geneva, sans-serif";
+    cxt.fillText("年会倒计时：",MARGIN_LEFT,MARGIN_TOP+(RADIUS+1)*5*2);
     cxt.restore();
 
 
+
+
     cxt.save();
-    setFontSize=Math.max(WINDOW_HEIGHT,WINDOW_WIDTH)/30;
+    setFontSize=Math.max(WINDOW_HEIGHT,WINDOW_WIDTH)/25;
     setFontSize+=parseFloat(num/10);
-    cxt.font=setFontSize+"px "+"Georgia";
-    cxt.textAlign="left";
+    cxt.font="bold "+setFontSize+"px "+"Georgia";
+    cxt.textAlign="center";
     cxt.textBaseline="ideographic";
     cxt.shadowColor="gray";
     cxt.fillStyle="blue";
@@ -288,7 +277,7 @@ function render(cxt){
     else num--;
 
 
-    cxt.fillText("——有趣的灵魂 总会相遇",MARGIN_LEFT,WINDOW_HEIGHT/24*21);//10*(RADIUS+1)
+    cxt.fillText("——有趣的灵魂 总会相遇",(WINDOW_WIDTH)/2,WINDOW_HEIGHT/24*14);//10*(RADIUS+1)
     //cxt.textAlign="center";
     cxt.restore();
 
