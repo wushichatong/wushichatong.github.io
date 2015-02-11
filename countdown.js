@@ -262,7 +262,7 @@ function render(cxt,context1){
     cxt.save();
 
 
-    cxt.fillStyle="red";
+    cxt.fillStyle="olive";
     cxt.textAlign="center";
     cxt.textBaseline="ideographic";
     /*cxt.shadowColor="gray";
