@@ -195,6 +195,7 @@ function render(cxt,context1){
 
     cxt.fillStyle=gr;*/
     cxt.globalAlpha=1;
+
     cxt.fillStyle="#ffa";
     cxt.fillRect(0,0,WINDOW_WIDTH,WINDOW_HEIGHT);
     cxt.restore();
