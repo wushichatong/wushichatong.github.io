@@ -183,7 +183,7 @@ function render(cxt,context1){
 
     cxt.clearRect(0,0,WINDOW_WIDTH,WINDOW_HEIGHT);//refresh the
     cxt.save();
-    var gr=cxt.createLinearGradient(WINDOW_WIDTH,0,WINDOW_WIDTH,WINDOW_HEIGHT);
+   /*var gr=cxt.createLinearGradient(WINDOW_WIDTH,0,WINDOW_WIDTH,WINDOW_HEIGHT);
     gr.addColorStop(0,"#fff");
     gr.addColorStop(0.5,"#ddd");
     gr.addColorStop(0.6,"#dce");
@@ -193,8 +193,9 @@ function render(cxt,context1){
     gr.addColorStop(0.98,"#ee3");
     gr.addColorStop(1,"#fff");
 
-    cxt.fillStyle=gr;
-    cxt.globalAlpha=1
+    cxt.fillStyle=gr;*/
+    cxt.globalAlpha=1;
+    cxt.fillStyle="#ffa";
     cxt.fillRect(0,0,WINDOW_WIDTH,WINDOW_HEIGHT);
     cxt.restore();
 
@@ -263,7 +264,7 @@ function render(cxt,context1){
 
 
     cxt.fillStyle="olive";
-    
+
     cxt.textAlign="center";
     cxt.textBaseline="ideographic";
     /*cxt.shadowColor="gray";
