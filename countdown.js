@@ -196,8 +196,9 @@ function render(cxt,context1){
     cxt.fillStyle=gr;*/
     cxt.globalAlpha=1;
 
-    cxt.fillStyle="#ffa";
-    
+    cxt.fillStyle="#fff";
+    cxt.globalAlpha=1;
+
     cxt.fillRect(0,0,WINDOW_WIDTH,WINDOW_HEIGHT);
     cxt.restore();
 
@@ -265,7 +266,7 @@ function render(cxt,context1){
     cxt.save();
 
 
-    cxt.fillStyle="olive";
+    cxt.fillStyle="red";
 
     cxt.textAlign="center";
     cxt.textBaseline="ideographic";
@@ -284,13 +285,14 @@ function render(cxt,context1){
     setFontSize=Math.max(WINDOW_HEIGHT,WINDOW_WIDTH)/18;
     cxt.font="bold "+setFontSize+"px "+"Verdana, Geneva, sans-serif";
     setFontSize=Math.max(WINDOW_HEIGHT,WINDOW_WIDTH)/25;
-    var gr=cxt.createLinearGradient((WINDOW_WIDTH/24*3.5-5/2*parseInt(setFontSize)),0
+    /*var gr=cxt.createLinearGradient((WINDOW_WIDTH/24*3.5-5/2*parseInt(setFontSize)),0
         ,(WINDOW_WIDTH/24*3.5+5/2*parseInt(setFontSize)),0);
     gr.addColorStop(0,"coral");
     gr.addColorStop(0.4,"brown");
     gr.addColorStop(0.6,"olive");
     gr.addColorStop(1,"gold");
-    cxt.fillStyle=gr;
+    cxt.fillStyle=gr;*/
+    cxt.fillStyle="rgb(0,102,153)";
     cxt.font="bold "+setFontSize+"px "+"Verdana, Geneva, sans-serif";
     cxt.fillText("年会倒计时：",MARGIN_LEFT,MARGIN_TOP+(RADIUS+1)*5*2);
     cxt.restore();
@@ -305,7 +307,7 @@ function render(cxt,context1){
     cxt.textAlign="center";
     cxt.textBaseline="ideographic";
     cxt.shadowColor="gray";
-    cxt.fillStyle="blue";
+    cxt.fillStyle="rgb(0,102,153)";
     cxt.globalAlpha=Math.abs(Math.sin(angle));
     if(angle>500)
         angle=0;

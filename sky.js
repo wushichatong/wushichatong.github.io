@@ -33,7 +33,7 @@ window.onload=function(){
     var skyStyle=context.createRadialGradient(
     canvas.width/2,canvas.height,0,
     canvas.width/2,canvas.height,canvas.height
-    )
+    );
     skyStyle.addColorStop(0,"#035");
     skyStyle.addColorStop(1,"black");
     context.fillStyle=skyStyle;
@@ -82,10 +82,10 @@ window.onload=function(){
         context.fillStyle = skyStyle;
         //context.fillRect(0,0,canvas.width,canvas.height);
         drawLand(canvas,context);
-    },400)
+    },400);
     //setInterval(update(canvas,context),60);
 
-    }
+    };
 
 function drawStar(context,x,y,outerR,innerR,rot){
     context.save();
