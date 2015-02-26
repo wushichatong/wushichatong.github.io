@@ -3,17 +3,95 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>HomePage</title>
+    <link rel="stylesheet" href="stylesheet.css" type="text/css" charset="utf-8" >
+    <style>
+        #canvas-wrapper{
+
+            position: relative;
+        }
+        #canvas{
+
+        }
+        #controller{
+            font-family: single_maltaregular;
+            width:160px;
+            height:100px;
+            position: absolute;
+            top:30px;
+            left: 30px;
+            background-color: rgba(0,85,116,0.5);
+            padding: 5px 20px 25px 20px;
+            border-radius: 10px 10px;
+            z-index:2;
+
+
+        }
+        #controller h1{
+            color: white;
+            margin-left: auto;
+
+        }
+        #controller #canvas-btn{
+            /*text-align: center;*/
+            display: inline-block;
+            background-color: #8b0;
+            color: white;
+            font-size: 14px;
+            padding: 5px 15px;
+            border-radius: 6px 6px;
+            text-decoration: none;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        #controller #canvas-btn:hover{
+            text-decoration: none;
+            background-color: #7a0;
+        }
+        #controller .color-btn{
+            color: white;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 6px 6px;
+            font-size: 14px;
+            text-decoration: none;
+            background-color: #8b0;
+        }
+        #controller .color-btn:hover{
+            text-decoration: none;
+            background-color: #7a0;
+        }
+
+
+
+        #controller #white-color-btn{
+            margin-left: 0;
+            background-color:  #8b0;
+
+        }
+        #controller #black-color-btn{
+            background-color:  #8b0;
+            margin-right: 0;
+        }
+    </style>
 
 
 </head>
 <body>
-<audio autoplay=autopaly >
+<audio autoplay="autoplay" >
     <source src="1.mp3" type="audio/mp3" />
 </audio>
-<canvas id="canvas" >
+<div id="canvas-wrapper">
+    <canvas id="canvas" >
     The browser you are using is not for canvas,please change then try again!
     <script src="sky.js"></script>
-</canvas>
+    </canvas>
+    <div id="controller" >
+        <h1 id="canvas-btn">Star In The Night</h1><br/>
+        <button class="color-btn" id="white-color-btn">begin</button>
+        <button class="color-btn" id="black-color-btn">stop </button>
+
+    </div>
+</div>
 
 </body>
 </html>
