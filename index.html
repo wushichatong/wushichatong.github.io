@@ -18,7 +18,7 @@
         position: absolute;
         top:10%;
         left:5%;
-        background-color: rgba(0,85,116,0.5);
+        background-color: rgba(0,85,116,0.4);
         padding: 5px 20px 25px 20px;
         border-radius: 10px 10px;
         z-index:2;
@@ -39,8 +39,8 @@
         padding: 5px 15px;
         border-radius: 6px 6px;
         text-decoration: none;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin-top: 10px;
+        margin-bottom: 14px;
     }
     #controller #canvas-btn:hover{
         text-decoration: none;
@@ -54,43 +54,46 @@
         font-size: 14px;
         text-decoration: none;
         background-color: #8b0;
+        font-family: single_maltaregular;
     }
     #controller .color-btn:hover{
         text-decoration: none;
         background-color: #7a0;
+        margin-bottom: 16px;
     }
 
 
 
     #controller #white-color-btn{
         margin-left: 0;
+        margin-top: 0px;
         background-color:  #8b0;
+        margin-bottom: 8px;
 
     }
-    /*#controller #black-color-btn{*/
-        /*background-color:  #8b0;*/
-        /*margin-right: 6px;*/
-    /*}*/
+    #controller #button{
+         background-color:  #8b0;
+         margin-top: 4px;
+     }
 </style>
 
 
 </head>
 <body>
-<audio autoplay="autoplay" >
+<audio id="music" >
     <source src="1.mp3" type="audio/mp3" />
 </audio>
 <div id="canvas-wrapper">
     <canvas id="canvas" >
         The browser you are using is not for canvas,please change then try again!
-        <script src="sky.js"></script>
     </canvas>
     <div id="controller" style="text-align: center">
         <h1 id="canvas-btn">Star In The Night</h1><br/>
-        <a href="test.html" class="color-btn" id="white-color-btn">view detail</a>
-        <!--<a href="#" class="color-btn" id="black-color-btn">stop </a>-->
+        <a href="test.html" class="color-btn" id="white-color-btn">view detail</a><br/>
+        <button class="color-btn" id="button">Music  Play</button>
 
     </div>
 </div>
-
+<script src="sky.js"></script>
 </body>
 </html>

@@ -45,6 +45,21 @@ window.onload=function(){
     context.fillStyle=skyStyle;
     context.fillRect(0,0,canvas.width,canvas.height);
 
+    //audio controls
+    var control=document.getElementById("button");
+    var audio=document.getElementById("music");
+    control.onclick= function() {
+        if(audio.paused)
+        {
+            audio.play();
+            control.innerText="music Pause";
+        }
+        else {
+            audio.pause();
+            control.innerText="Music  Play";
+        }
+    };
+
 
     var angle=0;
     //create the position of star
