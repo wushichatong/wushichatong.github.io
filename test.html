@@ -2,89 +2,33 @@
 <html>
 <head>
 
-    <title>HTML5 Canvas Demo</title>
-    <!--[if IE]>
-    <![endif]-->
-    <script>
-
-        window.onload=function() {
-            var myCanvas=document.getElementById("myCanvasTag1");
-            var myCanvas2=document.getElementById("myCanvasTag2");
-            var mycontext1=document.getElementById("myCanvasTag1").getContext('2d');
-            var mycontext2=document.getElementById("myCanvasTag2").getContext('2d');
-            var mycontext3=document.getElementById("myCanvasTag3").getContext('2d');
-            var mycontext4=document.getElementById("myCanvasTag4").getContext('2d');
-            var winWidth;
-            var winHeight;
-            //获取窗口宽度
-            if (window.innerWidth)
-                winWidth = window.innerWidth;
-            else if ((document.body) && (document.body.clientWidth))
-                winWidth = document.body.clientWidth;
-            //获取窗口高度
-            if (window.innerHeight)
-                winHeight = window.innerHeight;
-            else if ((document.body) && (document.body.clientHeight))
-                winHeight = document.body.clientHeight;
-            //通过深入Document内部对body进行检测，获取窗口大小
-            if (document.documentElement  && document.documentElement.clientHeight && document.documentElement.clientWidth)
-            {
-                winHeight = document.documentElement.clientHeight;
-                winWidth = document.documentElement.clientWidth;
-            }
-            WINDOW_HEIGHT_TURN=winHeight;
-            WINDOW_WIDTH_TURN=winWidth;
-            myCanvas.width=WINDOW_WIDTH_TURN;
-            myCanvas.height=WINDOW_HEIGHT_TURN;
-            myCanvas2.width=WINDOW_WIDTH_TURN;
-            myCanvas2.height=WINDOW_HEIGHT_TURN;
-
-            // gradient 1
-            var mygradient1=mycontext1.createLinearGradient(30,30,90,90);
-            mygradient1.addColorStop(0,"#FF0000");
-            mygradient1.addColorStop(1,"#00FF00");
-            mycontext1.fillStyle=mygradient1;
-            mycontext1.fillRect(0,0,100,100);
-            // gradient 2
-            var mygradient2=mycontext2.createLinearGradient(30,30,90,90);
-            mygradient2.addColorStop(1,"#FF0000");
-            mygradient2.addColorStop(0,"#00FF00");
-            mycontext2.fillStyle=mygradient2;
-            mycontext2.fillRect(0,0,100,100);
-
-            var mygradient3=mycontext3.createLinearGradient(30,30,90,90);
-            mygradient3.addColorStop(0,"#0000FF");
-            mygradient3.addColorStop(.5,"#00FFDD");
-            mycontext3.fillStyle=mygradient3;
-            mycontext3.fillRect(0,0,100,100);
-
-            var mygradient4=mycontext1.createLinearGradient(30,30,90,90);
-            mygradient4.addColorStop(0,"#DD33CC");
-            mygradient4.addColorStop(1,"#EEEEEE");
-            mycontext4.fillStyle=mygradient4;
-            mycontext4.fillRect(0,0,100,100);
+    <title>More</title>
+    <link rel="stylesheet" href="stylesheet.css" type="text/css" charset="utf-8" >
+    <style>
+        body{
+            background: #ddd;
+        }
+        h1{
+            margin-top: 20%;
+            font-family: single_maltaregular;
+            font-size: 200%;
+            text-align: center;
+        }
+        a{
+            margin-top: 20%;
+            font-family: single_maltaregular;
+            font-size: 200%;
+            text-align: center;
         }
 
-    </script>
+    </style>
+
+
 </head>
 <body>
-<div style="margin-left:30px;">
-    <canvas id="myCanvasTag1" width="100" height="724" style="border: 10px blue solid">
+<div style="text-align: center">
+    <h1>More is coming soon!</h1>
 
-
-    </canvas>
-    <br />
-    <canvas id="myCanvasTag2" width="100" height="724" style="border: 10px green solid">
-    </canvas>
-    <br />
-
-    <canvas id="myCanvasTag3" width="100" height="724" style="border: 10px red solid">
-    </canvas>
-    <br />
-    <canvas id="myCanvasTag4" width="100" height="724" style="border: 10px black solid">
-
-    </canvas>
-    <br /><br />
     <a href="index.html">back</a>
 </div>
 </body>
